@@ -18,6 +18,7 @@ const GuessInput = () => {
       >
         <label htmlFor="guess-input">Enter Guess:</label>
         <input
+          required
           id="guess-input"
           type="text"
           value={guess}
