@@ -1,10 +1,6 @@
 import React from 'react';
 
-const submitGuess = (guess) => {
-  console.info(guess);
-};
-
-const GuessInput = () => {
+const GuessInput = ({ submitGuess }) => {
   const [guess, setGuess] = React.useState('');
   return (
     <>
