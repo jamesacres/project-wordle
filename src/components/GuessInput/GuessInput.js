@@ -12,8 +12,10 @@ const GuessInput = () => {
         className="guess-input-wrapper"
         onSubmit={(e) => {
           e.preventDefault();
-          submitGuess(guess);
-          setGuess('');
+          if (guess.length === 5) {
+            submitGuess(guess);
+            setGuess('');
+          }
         }}
       >
         <label htmlFor="guess-input">Enter Guess:</label>
@@ -23,7 +25,10 @@ const GuessInput = () => {
           type="text"
           value={guess}
           pattern="[A-Z]{5}"
-          onChange={(e) => setGuess(e.target.value.slice(0, 5).toUpperCase())}
+          onChange={(e) => {
+            const nextGuess = e.target.value.slice(0, 5).toUpperCase();
+            setGuess(nextGuess);
+          }}
         ></input>
       </form>
     </>
