@@ -1,7 +1,7 @@
 import { NUM_OF_GUESSES_ALLOWED, WORD_LENGTH } from '../../constants';
 import Guess from '../Guess/Guess';
 
-const empties = Array.from(Array(NUM_OF_GUESSES_ALLOWED)).map((_, i) => {
+const empties = Array.from(Array(NUM_OF_GUESSES_ALLOWED)).map(() => {
   return { id: crypto.randomUUID(), value: ' '.repeat(WORD_LENGTH) };
 });
 
