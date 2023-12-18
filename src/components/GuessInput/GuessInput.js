@@ -1,7 +1,7 @@
 import React from 'react';
 import { WORD_LENGTH } from '../../constants';
 
-const GuessInput = ({ submitGuess }) => {
+const GuessInput = ({ submitGuess, disabled }) => {
   const [guess, setGuess] = React.useState('');
   return (
     <>
@@ -18,6 +18,7 @@ const GuessInput = ({ submitGuess }) => {
         <label htmlFor="guess-input">Enter Guess:</label>
         <input
           required
+          disabled={disabled}
           id="guess-input"
           type="text"
           value={guess}

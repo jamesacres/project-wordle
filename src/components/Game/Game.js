@@ -13,24 +13,36 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  const [status, setStatus] = React.useState('in_progress');
+
   const [guesses, setGuesses] = React.useState([]);
   const submitGuess = (guess) => {
-    if (guesses.length < NUM_OF_GUESSES_ALLOWED) {
-      setGuesses([
+    if (status === 'in_progress') {
+      const nextGuesses = [
         ...guesses,
         {
           id: crypto.randomUUID(),
           value: guess,
           statuses: checkGuess(guess, answer).map((result) => result.status),
         },
-      ]);
+      ];
+      setGuesses(nextGuesses);
+
+      if (guess === answer) {
+        setStatus('won');
+      } else if (nextGuesses.length === NUM_OF_GUESSES_ALLOWED) {
+        setStatus('lost');
+      }
     }
   };
 
   return (
     <>
       <GuessResults guesses={guesses} />
-      <GuessInput submitGuess={submitGuess} />
+      <GuessInput
+        submitGuess={submitGuess}
+        disabled={status !== 'in_progress'}
+      />
     </>
   );
 }
