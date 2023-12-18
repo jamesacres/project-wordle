@@ -47,7 +47,7 @@ function Game() {
       {status === 'won' && (
         <Banner className={'happy'}>
           <p>
-            <strong>Congratulations!</strong> Got it in
+            <strong>Congratulations!</strong> Got it in{' '}
             <strong>{guesses.length} guesses</strong>.
           </p>
         </Banner>
