@@ -48,7 +48,10 @@ function Game() {
         <Banner className={'happy'}>
           <p>
             <strong>Congratulations!</strong> Got it in{' '}
-            <strong>{guesses.length} guesses</strong>.
+            <strong>
+              {guesses.length} guess{guesses.length > 1 ? 'es' : ''}
+            </strong>
+            .
           </p>
         </Banner>
       )}
