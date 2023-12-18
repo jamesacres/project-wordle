@@ -6,6 +6,7 @@ import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { checkGuess } from '../../game-helpers';
+import { Banner } from '../Banner';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -43,6 +44,21 @@ function Game() {
         submitGuess={submitGuess}
         disabled={status !== 'in_progress'}
       />
+      {status === 'won' && (
+        <Banner className={'happy'}>
+          <p>
+            <strong>Congratulations!</strong> Got it in
+            <strong>{guesses.length} guesses</strong>.
+          </p>
+        </Banner>
+      )}
+      {status === 'lost' && (
+        <Banner className={'sad'}>
+          <p>
+            Sorry, the correct answer is <strong>LEARN</strong>.
+          </p>
+        </Banner>
+      )}
     </>
   );
 }
